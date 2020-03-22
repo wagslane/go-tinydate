@@ -74,7 +74,7 @@ All formatting is done via the time.Time package's formatting capabilites, but a
 
 ## Transient Dependencies
 
-None! Add it will stay that way, except of course for the standard library.
+None! And it will stay that way, except of course for the standard library.
 
 Note: Currently the testify package is used **only** for testing, but that dependency will be removed in coming updates.
 
