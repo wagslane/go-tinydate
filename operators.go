@@ -38,17 +38,16 @@ func (td TinyDate) Before(tu TinyDate) bool {
 
 // Add a duration to a TinyDate. Will only have an effect if more than 1 day is added
 func (td TinyDate) Add(d time.Duration) TinyDate {
-	t := td.ToTime()
-	t = t.Add(d)
-	newTD, _ := FromTime(t)
+	newTD, _ := FromTime(td.ToTime().Add(d))
 	return newTD
 }
 
-// AddDate adds a date
+// AddDate returns the time corresponding to adding the
+// given number of years, months, and days to t.
+// For example, AddDate(-1, 2, 3) applied to January 1, 2011
+// returns March 4, 2010.
 func (td TinyDate) AddDate(years int, months int, days int) TinyDate {
-	t := td.ToTime()
-	t = t.AddDate(years, months, days)
-	newTD, _ := FromTime(t)
+	newTD, _ := FromTime(td.ToTime().AddDate(years, months, days))
 	return newTD
 }
 
@@ -59,7 +58,5 @@ func (td TinyDate) Equal(tu TinyDate) bool {
 
 // Sub returns the duration (in days) between td and tu
 func (td TinyDate) Sub(tu TinyDate) time.Duration {
-	t := td.ToTime()
-	u := tu.ToTime()
-	return t.Sub(u)
+	return td.ToTime().Sub(tu.ToTime())
 }

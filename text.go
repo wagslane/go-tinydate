@@ -13,6 +13,8 @@ func (td *TinyDate) UnmarshalText(data []byte) error {
 	if err != nil {
 		return err
 	}
-	td = &newTD
+	td.year = newTD.year
+	td.month = newTD.month
+	td.day = newTD.day
 	return nil
 }

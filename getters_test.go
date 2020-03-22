@@ -47,3 +47,49 @@ func TestToUnix(t *testing.T) {
 	assert.Nil(t, err)
 	assert.Equal(t, int64(0), td.Unix())
 }
+
+func TestToUnixNano(t *testing.T) {
+	td, err := New(2017, 11, 4)
+	assert.Nil(t, err)
+	assert.Equal(t, int64(1509753600000000000), td.UnixNano())
+
+	td, err = New(1970, 1, 1)
+	assert.Nil(t, err)
+	assert.Equal(t, int64(0), td.UnixNano())
+}
+
+func TestWeekday(t *testing.T) {
+	td, err := New(2020, 03, 21)
+	assert.Nil(t, err)
+	assert.Equal(t, time.Saturday, td.Weekday())
+}
+
+func TestYearDay(t *testing.T) {
+	td, err := New(2020, 01, 01)
+	assert.Nil(t, err)
+	assert.Equal(t, 1, td.YearDay())
+
+	td, err = New(2020, 02, 01)
+	assert.Nil(t, err)
+	assert.Equal(t, 32, td.YearDay())
+
+	td, err = New(2020, 02, 02)
+	assert.Nil(t, err)
+	assert.Equal(t, 33, td.YearDay())
+}
+
+func TestISOWeek(t *testing.T) {
+	td, err := New(2020, 03, 21)
+	assert.Nil(t, err)
+	year, week := td.ISOWeek()
+	assert.Equal(t, 2020, year)
+	assert.Equal(t, 12, week)
+}
+func TestDate(t *testing.T) {
+	td, err := New(2020, 03, 21)
+	assert.Nil(t, err)
+	year, month, day := td.Date()
+	assert.Equal(t, 2020, year)
+	assert.Equal(t, time.March, month)
+	assert.Equal(t, 21, day)
+}

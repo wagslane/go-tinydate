@@ -67,5 +67,5 @@ func (td TinyDate) ISOWeek() (year, week int) {
 
 // Date returns the readable numerical values of the date
 func (td TinyDate) Date() (year int, month time.Month, day int) {
-	return int(td.year), time.Month(td.Month()), int(td.day)
+	return int(td.year), time.Month(td.Month()), int(td.Day())
 }
