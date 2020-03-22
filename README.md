@@ -3,6 +3,34 @@ A tiny date object in Go. Tinydate uses **4 bytes** of memory vs the **24 bytes*
 
 A tinydate only has *day* precision. It has no knowledge of hours, minutes, seconds, or timezones.
 
+## ⚙️ Installation
+
+```bash
+go get github.com/lane-c-wagner/go-tinydate
+```
+
+## 🚀 Quick Start
+
+```golang
+package main
+
+import (
+    tinydate "github.com/lane-c-wagner/go-tinydate"
+)
+
+func main(){
+    td, err := tinydate.New(2020, 04, 3)
+	if err != nil {
+		fmt.Println(err.Error())
+    }
+    
+    td = td.Add(time.Hour * 48)
+    fmt.Println(td)
+    // prints 2020-04-05
+}
+```
+
+
 ## Why?
 
 If you don't have resource constraints, then don't use tinydate! Use the standard [time](https://golang.org/pkg/time/) pacakge.
@@ -16,12 +44,6 @@ go-tinydate works well in the following situations:
 Example:
 
 I needed to store many thousands of dates in memory in order to keep track of which IDs I had seen in the last *X* number of days. As such, I had a giant `map[int]time.Time`. Switching from `map[int]time.Time` to `map[int]tinydate.TinyDate` reduced my program's memory from an average ~1GB to ~200MB.
-
-## ⚙️ Installation
-
-```bash
-go get github.com/lane-c-wagner/go-tinydate
-```
 
 ## 💬 Contact
 
