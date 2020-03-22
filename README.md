@@ -1,5 +1,5 @@
 # go-tinydate
-A tiny date object in Go. Tinydate uses *4 bytes* of memory vs the *24 bytes* of a standard time.Time{}
+A tiny date object in Go. Tinydate uses **4 bytes** of memory vs the **24 bytes** of a standard time.Time{}
 
 A tinydate only has *day* precision. It has no knowledge of hours, minutes, seconds, or timezones.
 
@@ -7,19 +7,31 @@ A tinydate only has *day* precision. It has no knowledge of hours, minutes, seco
 
 If you don't have resource constraints, then don't use tinydate! Use the standard [time](https://golang.org/pkg/time/) pacakge.
 
-go-tinydate should only be used when you *know* you won't need more than just *date* precision, and when you are resoure constrained. Perhaps one of the following situations apply:
+go-tinydate works well in the following situations:
 
-* Working in embedded systems where memory is a luxury
-* Storing millions of dates in memory and looking to reduce on server costs
-* Are sure you will never need more than date precision and just like being efficient
+* You are working in embedded systems where memory is a luxury
+* You are storing many dates and smaller memory footprint is desired
+* You are 101% sure you don't need more than date precision
 
 Example:
 
-I needed to store many thousands of dates in memory in order to keep track of which IDs I had seen in the last *X* number of days. As such, I had a giant `map[int]time.Time`. Switching from time.Time to tinydate.TinyDate reduced my program's memory from an average ~1GB to ~200MB.
+I needed to store many thousands of dates in memory in order to keep track of which IDs I had seen in the last *X* number of days. As such, I had a giant `map[int]time.Time`. Switching from `map[int]time.Time` to `map[int]tinydate.TinyDate` reduced my program's memory from an average ~1GB to ~200MB.
+
+## ⚙️ Installation
+
+```bash
+go get github.com/lane-c-wagner/go-tinydate
+```
+
+## 💬 Contact
+
+[![Twitter Follow](https://img.shields.io/twitter/follow/wagslane.svg?label=Follow%20Wagslane&style=social)](https://twitter.com/intent/follow?screen_name=wagslane)
+
+Submit an issue (above in the issues tab)
 
 ## API
 
-Tinydate mirrors the time.Time API for the most part. The following are the only methods on the time.Time object that are *not* included on the tinydate.TinyDate object, because they make no sense without more than *day* precision
+Tinydate mirrors the [time.Time](https://golang.org/pkg/time/) API for the most part. The following are the only methods on the time.Time object that are *not* included on the tinydate.TinyDate object, because they make no sense without more than *day* precision
 
 * [Clock()](https://golang.org/pkg/time/#Time.Clock)
 * [Hour()](https://golang.org/pkg/time/#Time.Hour)
@@ -36,8 +48,24 @@ Tinydate mirrors the time.Time API for the most part. The following are the only
 
 ## Formatting 
 
-All formatting is done via the time.Time package's formatting capabilites, but anything besides date data will be zeroed out
+All formatting is done via the time.Time package's formatting capabilites, but anything besides date data will be zeroed out for obvious reasons.
 
 ## Transient Dependencies
 
 None! Add it will stay that way, except of course for the standard library.
+
+Note: Currently the testify package is used **only** for testing, but that dependency will be removed in coming updates.
+
+## 👏 Contributing
+
+I love help! Contribute by forking the repo and opening pull requests. Please ensure that your code passes the existing tests and linting, and write tests to test your changes if applicable.
+
+All pull requests should be submitted to the "master" branch.
+
+```bash
+go test
+```
+
+```bash
+go fmt
+```
