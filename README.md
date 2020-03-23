@@ -3,6 +3,8 @@ A tiny date object in Go. Tinydate uses **4 bytes** of memory vs the **24 bytes*
 
 A tinydate only has *day* precision. It has no knowledge of hours, minutes, seconds, or timezones.
 
+[![](https://godoc.org/github.com/lane-c-wagner/go-tinydate?status.svg)](https://godoc.org/github.com/lane-c-wagner/go-tinydate)
+
 ## ⚙️ Installation
 
 ```bash
@@ -52,6 +54,8 @@ I needed to store many thousands of dates in memory in order to keep track of wh
 Submit an issue (above in the issues tab)
 
 ## API
+
+Godoc: https://godoc.org/github.com/lane-c-wagner/go-tinydate
 
 Tinydate mirrors the [time.Time](https://golang.org/pkg/time/) API for the most part. The following are the only methods on the time.Time object that are *not* included on the tinydate.TinyDate object, because they make no sense without more than *day* precision
 
