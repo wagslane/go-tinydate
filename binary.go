@@ -1,6 +1,10 @@
 package tinydate
 
-import "errors"
+import (
+	"errors"
+)
+
+const tinyDateBinaryVersion byte = 1
 
 // MarshalBinary implements the encoding.BinaryMarshaler interface
 func (td TinyDate) MarshalBinary() ([]byte, error) {
@@ -25,16 +29,13 @@ func (td *TinyDate) UnmarshalBinary(data []byte) error {
 		return errors.New("tinydate: unsupported version")
 	}
 
-	if len(buf) != /*version*/ 1+ /*days*/ 3 {
+	if len(buf) != /*version*/ 1+ /*year*/ 2+ /*month*/ 1+ /*day*/ 1 {
 		return errors.New("tinydate: invalid length")
 	}
 
-	newTD := TinyDate{
-		year:  uint16(buf[2]) | uint16(buf[1])<<8,
-		month: uint8(buf[3]),
-		day:   uint8(buf[4]),
-	}
-	td = &newTD
+	td.year = uint16(buf[2]) | uint16(buf[1])<<8
+	td.month = uint8(buf[3])
+	td.day = uint8(buf[4])
 
 	return nil
 }

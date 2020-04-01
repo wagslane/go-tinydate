@@ -1,7 +1,5 @@
 package tinydate
 
-const tinyDateBinaryVersion byte = 1
-
 const iso8601Date = "2006-01-02"
 
 // TinyDate -
