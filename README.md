@@ -32,6 +32,11 @@ func main(){
 }
 ```
 
+## Need Second Precision? Go-TinyTime 
+
+I've had people ask why go-tinydate doesn't use unix time as the underlying data, rather than day-month-year. Day-month-year supports dates from year
+`0` to year `65535`. Unix timestamps only supports dates from `1970` to `2106`. If you need more precision, take a look at [go-tinytime](https://github.com/lane-c-wagner/go-tinytime) which
+uses `unix` time underneath and supports second precision.
 
 ## Why?
 
@@ -57,20 +62,7 @@ Submit an issue (above in the issues tab)
 
 Godoc: https://godoc.org/github.com/lane-c-wagner/go-tinydate
 
-Tinydate mirrors the [time.Time](https://golang.org/pkg/time/) API for the most part. The following are the only methods on the time.Time object that are *not* included on the tinydate.TinyDate object, because they make no sense without more than *day* precision
-
-* [Clock()](https://golang.org/pkg/time/#Time.Clock)
-* [Hour()](https://golang.org/pkg/time/#Time.Hour)
-* [In(location)](https://golang.org/pkg/time/#Time.In)
-* [Local()](https://golang.org/pkg/time/#Time.Local)
-* [Location()](https://golang.org/pkg/time/#Time.Location)
-* [Minute()](https://golang.org/pkg/time/#Time.Minute)
-* [Nanosecond()](https://golang.org/pkg/time/#Time.Nanosecond)
-* [Round()](https://golang.org/pkg/time/#Time.Round)
-* [Second()](https://golang.org/pkg/time/#Time.Second)
-* [Truncate()](https://golang.org/pkg/time/#Time.Truncate)
-* [UTC()](https://golang.org/pkg/time/#Time.UTC)
-* [Zone()](https://golang.org/pkg/time/#Time.Zone)
+Tinydate mirrors the [time.Time](https://golang.org/pkg/time/) API for the most part. The only methods that are *not* included are the ones that makes no sense with only day precision, or without timezones apart from UTC.
 
 ## Formatting 
 
