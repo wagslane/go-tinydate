@@ -13,7 +13,7 @@ go get github.com/lane-c-wagner/go-tinydate
 
 ## 🚀 Quick Start
 
-```golang
+```go
 package main
 
 import (
