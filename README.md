@@ -3,12 +3,12 @@ A tiny date object in Go. Tinydate uses **4 bytes** of memory vs the **24 bytes*
 
 A tinydate only has *day* precision. It has no knowledge of hours, minutes, seconds, or timezones.
 
-[![](https://godoc.org/github.com/lane-c-wagner/go-tinydate?status.svg)](https://godoc.org/github.com/lane-c-wagner/go-tinydate)
+[![](https://godoc.org/github.com/wagslane/go-tinydate?status.svg)](https://godoc.org/github.com/wagslane/go-tinydate)
 
 ## ⚙️ Installation
 
 ```bash
-go get github.com/lane-c-wagner/go-tinydate
+go get github.com/wagslane/go-tinydate
 ```
 
 ## 🚀 Quick Start
@@ -17,7 +17,7 @@ go get github.com/lane-c-wagner/go-tinydate
 package main
 
 import (
-    tinydate "github.com/lane-c-wagner/go-tinydate"
+    tinydate "github.com/wagslane/go-tinydate"
 )
 
 func main(){
@@ -35,7 +35,7 @@ func main(){
 ## Need Second Precision? Go-TinyTime 
 
 I've had people ask why go-tinydate doesn't use unix time as the underlying data, rather than day-month-year. Day-month-year supports dates from year
-`0` to year `65535`. Unix timestamps only supports dates from `1970` to `2106`. If you need more precision, take a look at [go-tinytime](https://github.com/lane-c-wagner/go-tinytime) which
+`0` to year `65535`. Unix timestamps only supports dates from `1970` to `2106`. If you need more precision, take a look at [go-tinytime](https://github.com/wagslane/go-tinytime) which
 uses `unix` time underneath and supports second precision.
 
 ## Why?
@@ -60,7 +60,7 @@ Submit an issue (above in the issues tab)
 
 ## API
 
-Godoc: https://godoc.org/github.com/lane-c-wagner/go-tinydate
+Godoc: https://godoc.org/github.com/wagslane/go-tinydate
 
 Tinydate mirrors the [time.Time](https://golang.org/pkg/time/) API for the most part. The only methods that are *not* included are the ones that makes no sense with only day precision, or without timezones apart from UTC.
 

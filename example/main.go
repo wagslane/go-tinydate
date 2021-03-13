@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	tinydate "github.com/lane-c-wagner/go-tinydate"
+	tinydate "github.com/wagslane/go-tinydate"
 )
 
 func main() {

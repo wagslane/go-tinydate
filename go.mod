@@ -1,4 +1,4 @@
-module github.com/lane-c-wagner/go-tinydate
+module github.com/wagslane/go-tinydate
 
 go 1.13
 
